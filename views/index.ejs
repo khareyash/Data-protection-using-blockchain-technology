@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input your information</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="/web3.min.js"></script>
+
+</head>
+<body><section class="info"></section>
+    <div class="container">
+		
+        <h1><font color="white">Input the User Details</font></h1>
+
+        
+
+        
+
+        <label for="name" class="col-lg-2 control-label"><font color="white">User name</font></label>
+		<input id="name" type="text">
+		<label for="name" class="col-lg-2 control-label"><font color="white">User's CIBIL code</font></label>
+        <input id="code" type="text">
+
+        <button id="button">Update the Information</button>
+    
+		<br>
+		<br>
+		
+	
+
+	</div>
+</section>
+	<script> var mob = "<%=mobile%>";</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var CoursetroContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "fetchInfo",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_code",
+				"type": "uint256"
+			}
+		],
+		"name": "setInfo",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+    var Coursetro = CoursetroContract.at('0x77D0d5f0c22F329169df22942d4e6B8A7BB3aE18');
+    console.log(Coursetro);
+    Coursetro.getInfo(function(error, result){
+        if(!error)
+            {
+                $("#instructor").html(result[0]+' (name is '+result[1]+')');
+                console.log(result);
+            }
+        else
+            console.error(error);
+    });
+
+    $("#button").click(function() {
+		Coursetro.setInfo(mob, $("#name").val(),$("#code").val());
+    });
+
+    $("#button2").click(function() {
+        Coursetro.fetchInfo($("#viewId").val());
+    });
+    </script>
+
+</body>
+</html>

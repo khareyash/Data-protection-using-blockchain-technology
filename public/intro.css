@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: 0;
+          box-sizing: 0;
+  font-family: 'Roboto';
+  color: white;
+  font-size: 1.2rem;
+}
+
+.heading {
+  background-color: #002147;
+  text-align: center;
+}
+
+.heading h2 {
+  padding: 1.5em;
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.info {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#002147e0), to(#002147c2)), url("blockchain.png");
+  background-image: linear-gradient(#002147e0, #002147c2), url("blockchain.png");
+  background-size: cover;
+  padding-bottom: 9.3em;
+}
+
+.info ul li {
+  padding: 1em;
+}
+
+.info a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  position: relative;
+  font-weight: 600;
+}
+
+.info a:after {
+  content: '';
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  background: red;
+  right: 0;
+  bottom: -50%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.info a:hover:after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.info a:hover {
+  color: red;
+}
+
+.info-1 {
+  -webkit-box-flex: 70%;
+      -ms-flex: 70%;
+          flex: 70%;
+  max-width: 70%;
+  padding: 2em;
+}
+
+.info-2 {
+  -webkit-box-flex: 30%;
+      -ms-flex: 30%;
+          flex: 30%;
+  max-width: 30%;
+  padding: 2em;
+}
+/*# sourceMappingURL=intro.css.map */

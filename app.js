@@ -48,7 +48,7 @@ app.post('/otp', function(req, res)
 
      otp=msg()
      console.log(otp);
-    var url = "	http://bhashsms.com/api/sendmsg.php?user=Somilgupta&pass=123&sender=MINOLL&phone=" + mob + "&text=" + otp  + "&priority=ndnd&stype=normal"
+    var url = "	Add your OTP verification API link here" + mob + "&text=" + otp  + "&priority=ndnd&stype=normal"
     var options = {
         url: url,
         method: 'GET',
